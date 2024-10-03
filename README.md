@@ -1,6 +1,6 @@
 # Decentralized Lending with Sequential Double Auctions
  
-Abstract
+# Abstract
 By leveraging a decentralized blockchain protocol infrastructure lenders and borrowers can use an periodically run auction-based market to bid and ask loans of any token, collateral and maturity combination the decentralized autonomous organization (DAO) has voted to accept, at any size of loan by giving bids and asks according to their individual preferences on loan amount, maturity and interest.
  
 Rules of sequential double auctions for lending and borrowing
