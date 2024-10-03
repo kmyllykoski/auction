@@ -55,17 +55,17 @@ More information on the efficiency of auction markets can be found for example i
 
 # Additional development opportunities with auction lending
 
-Auto-renew lending bids and borrowing asks
+*Auto-renew lending bids and borrowing asks*
 
 Lenders making a bid can choose a parameter auto-renew to automatically move the liquidity of a successful bid to the following auctions. Interest for the next auction would be by default the same as for the bid that was successful in the previous auction, but it would be possible to change interest for the next auction during the maturity of the currently active loan until the next auction closing time (would need a separate parameter for the interest in the next auction). Unsuccessful bids are released from the auction pool regardless of auto-renew parameter value to prevent bids and asks with unserious interest to stay in the auction pool.
 To make it possible for borrowers to renew their asks and lend automatically in the next auction the ask parameter of amount of tokens to be lent is needed. Then the borrower can make a bid with larger than minimum collateral and define the amount to be borrowed smaller than the maximum amount the collateral amount could give, and then the excess collateral assures that the collateral is large enough to auto-renew the loan in the next auction. Similarly to lending bids, the borrower could adjust the interest rate until the next auction closing time.
 Borrowers auto-renew option should override the due time of payments of loan and interest of the previous auction until the next auction has cleared, so that the new loan can be used to pay the previous loan. If no bids are matching with the borrower's ask to renew the loan in the auction, then the borrower has three options: pay the loan and interest, increase interest in ask or let the loan get liquidated.
 
-Possibility for borrower to add collateral to active loans
+*Possibility for borrower to add collateral to active loans*
 
 The borrower could add more collateral to the borrowing ask contract to prevent liquidation of an active loan or to make the ask in the next auction valid with enough collateral.
  
-Volume based auction intervals
+*Volume based auction intervals*
 
 Auction bids and asks are matched in auctions periodically with intervals depending on the loan maturity and the supply and demand of loans. Interval of auctions could be automatically adjusted according to the market needs by making the auction ending time dependent on the volume of successful bids and asks with auction rules defining that the auction would have a soft ending time either at defined ending time or alternatively after volume exceeds some fixed threshold whichever occurs first. Next auction would be generated right after the previous auction has been cleared. For example, auctions for loans of 360 days maturity could be arranged every 30 days with 30 days duration of auction and have a soft ending time after the matched loans exceed 100000 ADA in value. Next auction would begin after the previous one would have been cleared. 
 
