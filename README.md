@@ -8,9 +8,12 @@ Auction bids and asks are matched periodically with intervals described as “Ca
 One Auction is held for each token, collateral, and maturity combination the DAO has voted to accept for auction lending. DAO will also decide the minimum level of collateral as a health factor for the token and maturity pairs.
 Auction opens for bids and asks at a given time and continues until auction end time. To prevent last minute bid sniping the auction will end only if no bids or asks are made or withdrawn during a fixed amount of time before auction end time, otherwise soft ending is used, and the auction end time will be postponed with fixed time to give participants time to react to last minute bids or asks or them being withdrawn.
 
-##Bids
+Bids
+
 Bids in an auction with the given token and maturity are made with a deposit of liquidity together with the demand of interest the bidder is willing to accept (lending amount and interest pair) into the smart contract running the auction. Lender’s deposit in the smart contract at the time of the ending of the auction makes the bid binding.
-##Asks
+
+Asks
+
 Asks are made with a deposit of collateral together with the interest borrower is willing to accept (collateral amount and interest pair) into the auction pool. When a new auction is created, minimum collateral requirement is calculated with market data on collateral token value. The collateral amount of the ask is divided with a fixed health factor to calculate the amount of token to be borrowed with the ask (borrowing amount). Borrower’s deposit of collateral at the time of the ending of the auction makes the ask binding at the closing time of the auction.
 Valid interest rate of both bids and asks can be restricted to be at fixed intervals, for example 0.1 %.
 Bids and asks can be withdrawn from the auction contract any time during the auction. Withdrawal of bids or asks will be charged with a withdrawal fee as a combination of a fixed fee and a percentage of the withdrawn lending or borrowing amount. Withdraw fees are necessary firstly to prevent attack with unserious small bids and asks, and secondly to prevent strategically placed large bids with low interest or asks with high interest that would be withdrawn at the last moment before auction end to discourage competitive bids or asks from participating in the auction.  
