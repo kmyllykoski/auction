@@ -16,6 +16,7 @@ Asks
 
 Asks are made with a deposit of collateral together with the interest borrower is willing to accept (collateral amount and interest pair) into the auction pool. When a new auction is created, minimum collateral requirement is calculated with market data on collateral token value. The collateral amount of the ask is divided with a fixed health factor to calculate the amount of token to be borrowed with the ask (borrowing amount). Borrower’s deposit of collateral at the time of the ending of the auction makes the ask binding at the closing time of the auction.
 Valid interest rate of both bids and asks can be restricted to be at fixed intervals, for example 0.1 %.
+
 Bids and asks can be withdrawn from the auction contract any time during the auction. Withdrawal of bids or asks will be charged with a withdrawal fee as a combination of a fixed fee and a percentage of the withdrawn lending or borrowing amount. Withdraw fees are necessary firstly to prevent attack with unserious small bids and asks, and secondly to prevent strategically placed large bids with low interest or asks with high interest that would be withdrawn at the last moment before auction end to discourage competitive bids or asks from participating in the auction.  
 After the auction has come to an end and bids and asks have been cleared, auction deposits of unsuccessful bids and asks are returned after deducting a participation fee to discourage unserious bids and asks.  
  
@@ -23,6 +24,7 @@ After the auction has come to an end and bids and asks have been cleared, auctio
 Auction clearing is done by ordering bids in ascending order by interest and asks ordered in descending order by interest. If there is a tie with the same interest the time of placing the bid or ask is used to determine order of clearing.
 Clearing is done by taking ordered bids one by one starting from the bid with lowest interest and dividing the bid to all the asks that have higher or equal interest than the bid interest in proportion of the ask amount that remains unfilled before the bid is processed. The auction ends when there are no bids that can be filled left.
 To simplify the process, all partially filled bids and asks could be determined as fully unsuccessful. Alternatively, partially filled bids and asks could be divided into two different bids or asks with filled part and unfilled part.
+
 Every individual accepted bid will be a separate p2p loan contract with the parameters from the auction clearing results (lending amount, collateral, interest).
 Every individual accepted ask will be a separate p2p loan contract with the parameters from the auction clearing results (borrowing amount, collateral, interest).
 Successful bids and asks receive an NFT holding data on the contract between them and the auction smart contract. NFT’s can be transferred to third parties to transfer the rights or obligations of the NFT holder in relation to the auction contract, creating the possibility of aftermarkets.
@@ -39,8 +41,11 @@ Lenders and borrowers transact with the auction contract through an off-chain us
  
 # Benefits of auction based lending
 With auction based lending, cost of search for market participants is reduced compared to posted price offerings or negotiations between participants outside of a marketplace. 
+
 Participants know with certainty the time of maturity and interest of the loan.
+
 Lenders and borrowers can transact giving and taking loans for any amount of tokens and with any of the maturities defined by the DAO to be available in different auction pools with an interest they accept.
+
 Sequential market clearing (“Call market”) can be more efficient than a continuous market for bids and asks as it collects more supply and demand from a longer time to be cleared at once. This can be especially beneficial in a market with low liquidity and a small number of transactions.
 More information on the efficiency of auction markets can be found for example in the following research paper about multi-attribute double auctions discussing similar markets to the auction market for lending and borrowing presented above:
  https://www.electronicmarkets.org/fileadmin/user_upload/doc/Issues/Volume_16/Issue_02/V16I2_Towards_Multi-Attribute_Double_Auctions_for_Financial_Markets.pdf
