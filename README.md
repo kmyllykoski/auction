@@ -18,6 +18,7 @@ Asks are made with a deposit of collateral together with the interest borrower i
 Valid interest rate of both bids and asks can be restricted to be at fixed intervals, for example 0.1 %.
 
 Bids and asks can be withdrawn from the auction contract any time during the auction. Withdrawal of bids or asks will be charged with a withdrawal fee as a combination of a fixed fee and a percentage of the withdrawn lending or borrowing amount. Withdraw fees are necessary firstly to prevent attack with unserious small bids and asks, and secondly to prevent strategically placed large bids with low interest or asks with high interest that would be withdrawn at the last moment before auction end to discourage competitive bids or asks from participating in the auction.  
+
 After the auction has come to an end and bids and asks have been cleared, auction deposits of unsuccessful bids and asks are returned after deducting a participation fee to discourage unserious bids and asks.  
  
 # Auction clearing mechanism
